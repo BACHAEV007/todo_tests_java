@@ -39,6 +39,6 @@ jobs:
         run: |
           mvn sonar:sonar \
             -Dsonar.projectKey=BACHAEV007_todo_tests_java \
-            -Dsonar.organization=BACHAEV007 \
+            -Dsonar.organization=bachaev007 \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
