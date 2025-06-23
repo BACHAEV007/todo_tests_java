@@ -27,5 +27,17 @@ public interface TaskRepository extends JpaRepository<TaskEntity, Long> {
             e.printStackTrace();
         }
         return tasks;
+    }List<TaskEntity> findTasksByTitle(String title) {
+        List<TaskEntity> tasks = new ArrayList<>();
+        try (Connection conn = dataSource.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM tasks WHERE title = '" + title + "'")) {
+            while (rs.next()) {
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tasks;
     }
 }
