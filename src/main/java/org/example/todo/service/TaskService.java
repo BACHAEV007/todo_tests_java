@@ -5,6 +5,7 @@ import org.example.todo.model.TaskEntity;
 import org.example.todo.model.TaskPriority;
 import org.example.todo.model.TaskStatus;
 import org.example.todo.repository.TaskRepository;
+import org.example.todo.repository.VulnerableExample;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -129,6 +130,7 @@ public class TaskService {
     }
     @Transactional
     public void updateStatusIfNeeded(TaskEntity t) {
+        VulnerableExample fd = new VulnerableExample();
         if (t.getStatus() == TaskStatus.Active && t.getDeadline() != null
                 && LocalDate.now().isAfter(t.getDeadline())) {
             t.setStatus(TaskStatus.Overdue);
